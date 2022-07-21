@@ -3,9 +3,11 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { Box, Container, Text } from '@chakra-ui/react';
 import {getCuratedPhotos} from "../lib/api";
+import React, { useState } from 'react';
+
+const [photos, setPhotos] = useState(data);
 
 export default function Home({data}) {
-  console.log(data)
   return (
     <div className={styles.container}>
       <Head>
@@ -27,6 +29,11 @@ export default function Home({data}) {
             Mana's Blog
           </Text>
         </Container>
+        {
+          photos.map((pic) => (
+            <img src={pic.src.original} width="500" height="500" />
+          ))
+        }
       </Box>
 
       
@@ -71,7 +78,7 @@ export default function Home({data}) {
       </main> */}
 
 export async function getServerSideProps() {
-  const data = await getCuratedPhotos();
+   const data = await getCuratedPhotos();
     return {
       props: {
       data,
