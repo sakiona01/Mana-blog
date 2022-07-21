@@ -1,11 +1,12 @@
 import Head from 'next/head';
-import Image from 'next/image';
+// import Image from 'next/image';
+import { Image } from '@chakra-ui/react'
 import styles from '../styles/Home.module.css';
 import { Box, Container, Text } from '@chakra-ui/react';
 import {getCuratedPhotos} from "../lib/api";
 import React, { useState } from 'react';
 
-const [photos, setPhotos] = useState(data);
+// const [photos, setPhotos] = useState(data);
 
 export default function Home({data}) {
   return (
@@ -29,17 +30,19 @@ export default function Home({data}) {
             Mana's Blog
           </Text>
         </Container>
-        {
+        {/* {
           photos.map((pic) => (
             <img src={pic.src.original} width="500" height="500" />
           ))
-        }
-      </Box>
+        } */}
 
-      
-
-
-      {/* <main className={styles.main}>
+        <Image
+          borderRadius='full'
+          boxSize='150px'
+          src='https://media-exp1.licdn.com/dms/image/C5603AQE0HuZ0I23k3w/profile-displayphoto-shrink_800_800/0/1658447265385?e=1663804800&v=beta&t=e4-a_UB33smKeGwhEZmNgO_Vl_S8BUG-CJYLN6bKAQc'
+          alt='Image'
+        />
+        <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -75,16 +78,22 @@ export default function Home({data}) {
             </p>
           </a>
         </div>
-      </main> */}
+      </main>
+      </Box>
 
-export async function getServerSideProps() {
+      
+
+
+      
+
+{/* export async function getServerSideProps() {
    const data = await getCuratedPhotos();
     return {
       props: {
       data,
       },
     };
-  }
+  } */}
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
